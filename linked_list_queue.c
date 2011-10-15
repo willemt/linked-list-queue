@@ -104,7 +104,7 @@ void llqueue_offer(
 
 void *llqueue_remove_item(
     linked_list_queue_t * qu,
-    void *item
+    const void *item
 )
 {
     llqnode_t *node, *prev;
@@ -114,7 +114,7 @@ void *llqueue_remove_item(
 
     while (node)
     {
-        void *item;
+        void *ritem;
 
         if (node->item == item)
         {
@@ -131,9 +131,9 @@ void *llqueue_remove_item(
                 }
 
                 qu->count--;
-                item = node->item;
+                ritem = node->item;
                 free(node);
-                return item;
+                return ritem;
             }
         }
 
@@ -145,7 +145,7 @@ void *llqueue_remove_item(
 }
 
 int llqueue_count(
-    linked_list_queue_t * qu
+    const linked_list_queue_t * qu
 )
 {
     return qu->count;
