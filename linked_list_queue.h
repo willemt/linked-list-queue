@@ -30,9 +30,9 @@ void llqueue_offer(
 
 void *llqueue_remove_item(
     linked_list_queue_t * qu,
-    void *item
+    const void *item
 );
 
 int llqueue_count(
-    linked_list_queue_t * qu
+    const linked_list_queue_t * qu
 );
