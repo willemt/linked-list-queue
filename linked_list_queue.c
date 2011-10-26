@@ -94,6 +94,7 @@ void llqueue_offer(
 
     node = malloc(sizeof(llqnode_t));
     node->item = item;
+    node->next = NULL;
     if (qu->tail)
         qu->tail->next = node;
     if (!qu->head)

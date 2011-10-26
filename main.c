@@ -9,6 +9,8 @@ extern void TestLLQueue_offer(CuTest*);
 extern void TestLLQueue_cant_poll_with_no_contents(CuTest*);
 extern void TestLLQueue_offer_and_poll_item(CuTest*);
 extern void TestLLQueue_fifo(CuTest*);
+extern void TestLLQueue_remove_item_is_null_when_not_available(CuTest*);
+extern void TestLLQueue_remove_item(CuTest*);
 
 
 void RunAllTests(void) 
@@ -21,6 +23,8 @@ void RunAllTests(void)
     SUITE_ADD_TEST(suite, TestLLQueue_cant_poll_with_no_contents);
     SUITE_ADD_TEST(suite, TestLLQueue_offer_and_poll_item);
     SUITE_ADD_TEST(suite, TestLLQueue_fifo);
+    SUITE_ADD_TEST(suite, TestLLQueue_remove_item_is_null_when_not_available);
+    SUITE_ADD_TEST(suite, TestLLQueue_remove_item);
 
     CuSuiteRun(suite);
     CuSuiteSummary(suite, output);

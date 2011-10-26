@@ -70,3 +70,34 @@ void TestLLQueue_fifo(
     CuAssertTrue(tc, item2 == llqueue_poll(qu));
     llqueue_free(qu);
 }
+
+void TestLLQueue_remove_item_is_null_when_not_available(
+    CuTest * tc
+)
+{
+    void *qu;
+
+    char *item = "testitem", *item2 = "testitem2";
+
+    qu = llqueue_new();
+
+    llqueue_offer(qu, item);
+    CuAssertTrue(tc, NULL == llqueue_remove_item(qu, item2));
+    llqueue_free(qu);
+}
+
+void TestLLQueue_remove_item(
+    CuTest * tc
+)
+{
+    void *qu;
+
+    char *item = "testitem", *item2 = "testitem2";
+
+    qu = llqueue_new();
+
+    llqueue_offer(qu, item);
+    llqueue_offer(qu, item2);
+    CuAssertTrue(tc, item2 == llqueue_remove_item(qu, item2));
+    llqueue_free(qu);
+}
