@@ -101,3 +101,19 @@ void TestLLQueue_remove_item(
     CuAssertTrue(tc, item2 == llqueue_remove_item(qu, item2));
     llqueue_free(qu);
 }
+
+void TestLLQueue_remove_item_when_it_is_head(
+    CuTest * tc
+)
+{
+    void *qu;
+
+    char *item = "testitem", *item2 = "testitem2";
+
+    qu = llqueue_new();
+
+    llqueue_offer(qu, item);
+    llqueue_offer(qu, item2);
+    CuAssertTrue(tc, item == llqueue_remove_item(qu, item));
+    llqueue_free(qu);
+}

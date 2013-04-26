@@ -11,6 +11,7 @@ extern void TestLLQueue_offer_and_poll_item(CuTest*);
 extern void TestLLQueue_fifo(CuTest*);
 extern void TestLLQueue_remove_item_is_null_when_not_available(CuTest*);
 extern void TestLLQueue_remove_item(CuTest*);
+extern void TestLLQueue_remove_item_when_it_is_head(CuTest*);
 
 
 void RunAllTests(void) 
@@ -25,14 +26,15 @@ void RunAllTests(void)
     SUITE_ADD_TEST(suite, TestLLQueue_fifo);
     SUITE_ADD_TEST(suite, TestLLQueue_remove_item_is_null_when_not_available);
     SUITE_ADD_TEST(suite, TestLLQueue_remove_item);
+    SUITE_ADD_TEST(suite, TestLLQueue_remove_item_when_it_is_head);
 
     CuSuiteRun(suite);
     CuSuiteSummary(suite, output);
     CuSuiteDetails(suite, output);
-    printf("%s\n", output->buffer);
+    printf("%s\\n", output->buffer);
 }
 
-int main(int argc, char **argv)
+int main()
 {
     RunAllTests();
     return 0;
