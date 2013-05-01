@@ -36,3 +36,13 @@ void *llqueue_remove_item(
 int llqueue_count(
     const linked_list_queue_t * qu
 );
+
+void *llqueue_remove_item_via_cmpfunction(
+    linked_list_queue_t * qu,
+    const void *item,
+    int (*cmp)(const void*, const void*));
+
+void *llqueue_get_item_via_cmpfunction(
+    linked_list_queue_t * qu,
+    const void *item,
+    int (*cmp)(const void*, const void*));

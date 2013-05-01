@@ -103,6 +103,8 @@ void llqueue_offer(
     qu->count++;
 }
 
+/**
+ * remove this item, by comparing the memory address of the item */
 void *llqueue_remove_item(
     linked_list_queue_t * qu,
     const void *item
@@ -139,6 +141,82 @@ void *llqueue_remove_item(
         }
 
         prev = node;
+        node = node->next;
+    }
+
+    return NULL;
+}
+
+/**
+ * remove this item, by using the supplied compare function */
+void *llqueue_remove_item_via_cmpfunction(
+    linked_list_queue_t * qu,
+    const void *item,
+    int (*cmp)(const void*, const void*)
+)
+{
+    llqnode_t *node, *prev;
+
+    assert(cmp);
+    assert(item);
+
+    prev = NULL;
+    node = qu->head;
+
+    while (node)
+    {
+        void *ritem;
+
+        if (0 == cmp(node->item,item))
+        {
+            if (node == qu->head)
+            {
+                return llqueue_poll(qu);
+            }
+            else
+            {
+                prev->next = node->next;
+                if (node == qu->tail)
+                {
+                    qu->tail = prev;
+                }
+
+                qu->count--;
+                ritem = node->item;
+                free(node);
+                return ritem;
+            }
+        }
+
+        prev = node;
+        node = node->next;
+    }
+
+    return NULL;
+}
+
+/**
+ * get this item, by using the supplied compare function */
+void *llqueue_get_item_via_cmpfunction(
+    linked_list_queue_t * qu,
+    const void *item,
+    int (*cmp)(const void*, const void*)
+)
+{
+    llqnode_t *node;
+
+    assert(cmp);
+    assert(item);
+
+    node = qu->head;
+
+    while (node)
+    {
+        if (0 == cmp(node->item,item))
+        {
+            return node->item;
+        }
+
         node = node->next;
     }
 
