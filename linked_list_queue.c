@@ -199,8 +199,7 @@ void *llqueue_remove_item_via_cmpfunction(
 void *llqueue_get_item_via_cmpfunction(
     linked_list_queue_t * qu,
     const void *item,
-    const void *udata,
-    int (*cmp)(const void*, const void*, const void*)
+    int (*cmp)(const void*, const void*)
 )
 {
     llqnode_t *node;
@@ -212,7 +211,7 @@ void *llqueue_get_item_via_cmpfunction(
 
     while (node)
     {
-        if (0 == cmp(node->item,item,udata))
+        if (0 == cmp(node->item,item))
         {
             return node->item;
         }
