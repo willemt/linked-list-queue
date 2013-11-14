@@ -35,8 +35,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "linked_list_queue.h"
 
-void *llqueue_new(
-)
+void *llqueue_new()
 {
     linked_list_queue_t *qu;
 
@@ -200,7 +199,8 @@ void *llqueue_remove_item_via_cmpfunction(
 void *llqueue_get_item_via_cmpfunction(
     linked_list_queue_t * qu,
     const void *item,
-    int (*cmp)(const void*, const void*)
+    const void *udata,
+    int (*cmp)(const void*, const void*, const void*)
 )
 {
     llqnode_t *node;
@@ -212,7 +212,7 @@ void *llqueue_get_item_via_cmpfunction(
 
     while (node)
     {
-        if (0 == cmp(node->item,item))
+        if (0 == cmp(node->item,item,udata))
         {
             return node->item;
         }
