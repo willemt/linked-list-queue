@@ -45,4 +45,4 @@ void *llqueue_remove_item_via_cmpfunction(
 void *llqueue_get_item_via_cmpfunction(
     linked_list_queue_t * qu,
     const void *item,
-    int (*cmp)(const void*, const void*));
+    unsigned long (*cmp)(const void*, const void*));
