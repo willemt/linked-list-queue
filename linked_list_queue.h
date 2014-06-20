@@ -1,3 +1,6 @@
+#ifndef LINKED_LIST_QUEUE_H
+#define LINKED_LIST_QUEUE_H
+
 typedef struct llqnode_s llqnode_t;
 
 struct llqnode_s
@@ -46,3 +49,5 @@ void *llqueue_get_item_via_cmpfunction(
     linked_list_queue_t * qu,
     const void *item,
     long (*cmp)(const void*, const void*));
+
+#endif /* LINKED_LIST_QUEUE_H */
