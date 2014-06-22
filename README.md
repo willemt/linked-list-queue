@@ -8,7 +8,7 @@ void *q = llqueue_new();
 
 llqueue_offer(q, obj);
 
-llqueue_poll(q);
+printf("object from queue: %s\n", llqueue_poll(q));
 
 ```
 
