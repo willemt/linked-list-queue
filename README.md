@@ -1,6 +1,4 @@
 # How does it work?
-Example:
-
 
 ```c
 
@@ -11,7 +9,6 @@ void *q = llqueue_new();
 llqueue_offer(q, obj);
 
 llqueue_poll(q);
-
 
 ```
 
